@@ -11,5 +11,7 @@ class BookForm(ModelForm):
             'web',
             'price',
             'picture',
+            'comments',
+
 
         ]
