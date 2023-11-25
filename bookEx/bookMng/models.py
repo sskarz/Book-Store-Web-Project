@@ -21,6 +21,8 @@ class Book(models.Model):
     picture = models.FileField(upload_to='bookEx/static/upload')
     pic_path = models.CharField(max_length=300, editable=False, blank=True)
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    comments = models.CharField(max_length=200)
+
 
     def __str__(self):
         return str(self.id)

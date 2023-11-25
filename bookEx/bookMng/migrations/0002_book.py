@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('web', models.URLField()),
                 ('price', models.DecimalField(decimal_places=2, max_digits=8)),
+                ('comments', models.CharField(max_length=200)),
                 ('publishdate', models.DateField(auto_now=True)),
                 ('picture', models.FileField(upload_to='bookEx/static/upload')),
                 ('pic_path', models.CharField(blank=True, editable=False, max_length=300)),

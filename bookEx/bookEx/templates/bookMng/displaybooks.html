@@ -22,6 +22,9 @@
         <th>
             Book Price
         </th>
+         <th>
+            Comment
+        </th>
         <th>
             Book Image
         </th>
@@ -35,6 +38,9 @@
                 </td>
                 <td align="center">
                     {{ book.price}}
+                </td>
+                <td align="center">
+                    {{ book.comments }}
                 </td>
                 <td align="center">
                      <img src="{% static book.pic_path %}" height="60" width="60" alt=" "/>
