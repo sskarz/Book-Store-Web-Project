@@ -113,3 +113,11 @@ def mybooks(request):
                       'books': books
                   }
                   )
+
+@login_required(login_url=reverse_lazy('login'))
+def messages(request):
+    return render(request, 'bookMng/messages.html',{
+                      'item_list': MainMenu.objects.all()
+                      'form': form,
+                      'submitted' : submitted
+                  })
