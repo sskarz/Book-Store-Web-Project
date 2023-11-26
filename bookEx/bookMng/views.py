@@ -117,7 +117,7 @@ def mybooks(request):
                   )
 
 @login_required(login_url=reverse_lazy('login'))
-def messages(request, form):
+def messages(request):
     submitted = False
     if request.method == 'POST':
         form = MessageForm(request.POST, request.FILES)
