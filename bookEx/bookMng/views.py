@@ -7,6 +7,8 @@ from .models import Book
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from .models import Message
+from .forms import MessageForm
 
 from django.contrib.auth.decorators import login_required
 
@@ -117,6 +119,20 @@ def mybooks(request):
 @login_required(login_url=reverse_lazy('login'))
 def messages(request, form):
     submitted = False
+    if request.method == 'POST':
+        form = MessageForm(request.POST, request.FILES)
+        if form.is_valid():
+            message = form.save(commit=False)
+            try:
+                message.username = request.user
+            except Exception:
+                pass
+            message.save()
+            return HttpResponseRedirect('/messages?submitted=True')
+    else:
+        form = BookForm()
+        if 'submitted' in request.GET:
+            submitted = True
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
                       'form': form,

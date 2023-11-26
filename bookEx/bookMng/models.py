@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Message(models.Model):
+    message = models.CharField(max_length= 500, blank=True)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    def _str_(self):
+        return self.message
+
 
 class MainMenu(models.Model):
     item = models.CharField(max_length=200, unique=True)

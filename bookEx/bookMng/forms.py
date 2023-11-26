@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Book
+from .models import Message
 
 
 class BookForm(ModelForm):
@@ -15,3 +16,7 @@ class BookForm(ModelForm):
 
 
         ]
+
+class MessageForm(ModelForm):
+    model = Message
+    fields = ['message','user', 'date',]
