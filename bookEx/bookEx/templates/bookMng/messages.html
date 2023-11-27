@@ -19,6 +19,6 @@
             Type your message here then submit
         </textarea>
         <input type = "submit" value = "Submit">
+        {% csrf_token %}
     </form>
-    {% csrf_token %}
 {% endblock content %}
