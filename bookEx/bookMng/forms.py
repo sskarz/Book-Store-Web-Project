@@ -13,6 +13,7 @@ class BookForm(ModelForm):
             'price',
             'picture',
             'comments',
+            'rating',
 
 
         ]
