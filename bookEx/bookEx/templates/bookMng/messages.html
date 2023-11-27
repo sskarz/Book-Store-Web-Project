@@ -12,8 +12,30 @@
 </li>
 {% endfor %}
 {% endblock sidenav %}
+
 {% block content %}
     <h1>Messages</h1>
+
+    <table align="center" border="2" width="400">
+        <tr>
+            <th>Message</th>
+            <th>User</th>
+            <th>Date</th>
+        
+        </tr>
+        {% for message in messages %}
+            <tr>
+                <td align = "center">
+                    {{message.message}}
+                </td>
+                <td align = "center">
+                    {{message.user}}
+                </td>
+                <td align = "center">
+                    {{message.date}}
+                </td>
+            </tr>
+    </table>
     <form action="" method = "post" novalidate>
         <textarea name="message" cols="50" rows="10">
             Type your message here then submit
