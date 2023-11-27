@@ -13,31 +13,26 @@
 </li>
 {% endfor %}
 {% endblock sidenav %}
+
 {% block content %}
     <h1 align="center">Display Book Page</h1>
     <table align="center" border="2" width="400">
-        <th>
-            Book Name
-        </th>
-        <th>
-            Book Price
-        </th>
-         <th>
-            Comment
-        </th>
-        <th>
-            Book Image
-        </th>
-        {% for book in books%}
+        <tr>
+            <th>Book Name</th>
+            <th>Book Price</th>
+            <th>Comment</th>
+            <th>Book Image</th>
+            <th>Rating</th> <!-- New column for rating -->
+        </tr>
+        {% for book in books %}
             <tr>
                 <td align="center">
                     <a href="book_detail/{{ book.id }}">
                         {{ book.name }}
                     </a>
-
                 </td>
                 <td align="center">
-                    {{ book.price}}
+                    {{ book.price }}
                 </td>
                 <td align="center">
                     {{ book.comments }}
@@ -45,8 +40,10 @@
                 <td align="center">
                      <img src="{% static book.pic_path %}" height="60" width="60" alt=" "/>
                 </td>
+                <td align="center">
+                    {{ book.rating }}/5 <!-- Display the rating here -->
+                </td>
             </tr>
-        {% endfor%}
+        {% endfor %}
     </table>
-
 {% endblock content %}

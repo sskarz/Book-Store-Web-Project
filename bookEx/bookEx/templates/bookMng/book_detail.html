@@ -34,6 +34,9 @@
          <th>
             Book Post Time
         </th>
+        <th>
+            Book Rating
+        </th>
         {% for book in books%}
             <tr>
                 <td>
@@ -47,6 +50,9 @@
                 </td>
                 <td>
                     {{ book.price }}
+                </td>
+                <td>
+                    {{ book.rating }}
                 </td>
                 <td align="center">
                     <a href="book_detail/{{ book.id }}">
