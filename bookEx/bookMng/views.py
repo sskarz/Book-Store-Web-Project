@@ -131,11 +131,11 @@ def messages(request):
             message.save()
             return HttpResponseRedirect('/messages?submitted=True')
     else:
-        form = BookForm()
+        form = MessageForm()
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
                       'form': form,
-                      'submitted' : submitted
+                      'submitted': submitted
                   })
