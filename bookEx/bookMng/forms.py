@@ -22,5 +22,5 @@ class MessageForm(ModelForm):
     class Meta:
         model = Message
         fields = [
-            'message','user', 'date',
+            'message','user',
             ]
