@@ -134,8 +134,14 @@ def messages(request):
         form = MessageForm()
         if 'submitted' in request.GET:
             submitted = True
+
+    for m in messages:
+        m.user = request.POST.get('user', None)
+        m.message = request.POST.get('message', None)
+        m.date = request.POST.get('date', None)
+
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
                       'form': form,
-                      'submitted': submitted
+                      'submitted': submitted,
                   })
