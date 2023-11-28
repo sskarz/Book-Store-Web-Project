@@ -119,6 +119,7 @@ def mybooks(request):
 @login_required(login_url=reverse_lazy('login'))
 def messages(request):
     submitted = False
+    messages = Message.objects.all()
     if request.method == 'POST':
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -130,11 +131,17 @@ def messages(request):
             message.save()
             return HttpResponseRedirect('/messages?submitted=True')
     else:
-        form = BookForm()
+        form = MessageForm()
         if 'submitted' in request.GET:
             submitted = True
+
+    for m in messages:
+        m.user = request.POST.get('user', None)
+        m.message = request.POST.get('message', None)
+        m.date = request.POST.get('date', None)
+
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
                       'form': form,
-                      'submitted' : submitted
+                      'submitted': submitted,
                   })

@@ -19,5 +19,8 @@ class BookForm(ModelForm):
         ]
 
 class MessageForm(ModelForm):
-    model = Message
-    fields = ['message','user', 'date',]
+    class Meta:
+        model = Message
+        fields = [
+            'message','user',
+            ]
