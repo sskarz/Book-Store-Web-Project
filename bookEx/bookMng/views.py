@@ -135,10 +135,10 @@ def messages(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    for m in messages:
-        m.user = request.POST.get('user')
-        m.message = request.POST.get('message')
-        m.date = request.POST.get('date')
+    for message in messages:
+        message.user = request.POST.get('user')
+        message.message = request.POST.get('message')
+        message.date = request.POST.get('date')
 
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
