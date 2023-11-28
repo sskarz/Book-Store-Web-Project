@@ -125,7 +125,7 @@ def messages(request):
         if form.is_valid():
             message = form.save(commit=False)
             try:
-                message.username = request.user
+                message.user = request.user
             except Exception:
                 pass
             message.save()
@@ -136,12 +136,13 @@ def messages(request):
             submitted = True
 
     for m in messages:
-        m.user = request.POST.get('user', None)
-        m.message = request.POST.get('message', None)
-        m.date = request.POST.get('date', None)
+        m.user = request.POST.get('user')
+        m.message = request.POST.get('message')
+        m.date = request.POST.get('date')
 
     return render(request, 'bookMng/messages.html',{
                       'item_list': MainMenu.objects.all(),
                       'form': form,
                       'submitted': submitted,
+                      'messages': messages,
                   })

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Message(models.Model):
     message = models.CharField(max_length= 500, blank=True)
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now=True)
     def _str_(self):
         return self.message
 
