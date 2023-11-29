@@ -147,5 +147,15 @@ def messages(request):
                       'messages': messages,
                   })
 
- 
+def search(request):
+    books = Book.objects.filter(name=request.name)
+    for b in books:
+        b.pic_path = b.picture.url[14:]
+    return render(request,
+                  'bookMng/search.html',
+                  {
+                      'item_list': MainMenu.objects.all(),
+                      'books': books
+                  }
+                  )
 
