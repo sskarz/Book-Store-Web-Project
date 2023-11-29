@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %}
+   Display
+{% endblock title %}
+
+{% block sidenav %}
+
+{% for item in item_list %}
+<li>
+    <a href="{{ item.link }}">{{item.item}}</a>
+</li>
+{% endfor %}
+{% endblock sidenav %}
+
+{% block content %}
+    <form action = "" enctype ="multipart/form-data" method = "submit" novalidate>
+        <input type="text" placeholder="Search for a book..">
+        <button type ="submit">Submit</button>
+    </form>
+{% endblock content%}
