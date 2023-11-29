@@ -148,7 +148,7 @@ def messages(request):
                   })
 
 def search(request):
-    books = Book.objects.filter(name=request.name)
+    books = Book.objects.filter(name=request.POST.get('search'))
     for b in books:
         b.pic_path = b.picture.url[14:]
     return render(request,
