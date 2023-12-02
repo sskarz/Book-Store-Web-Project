@@ -16,7 +16,7 @@
     <img src="{% static 'logo.jpg'%}" height="60" width="60" alt=" "/>
     <span style="float: right">
         {% if user.is_authenticated %}
-            {{ user.username}}
+            {{ user.username }}
         <a href="{% url 'logout' %}?next=/">Logout</a>
         {% else %}
             Not Logged in
