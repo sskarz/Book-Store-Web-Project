@@ -1,3 +1,25 @@
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s; /* Or however long you want the fade to take */
+  animation-fill-mode: both; /* Keep the end state after the animation */
+}
+
+/* Apply fade-in animation to all paragraphs within the content section */
+.container .row div p {
+  animation: fadeIn 1s ease-in-out; /* Consistent 5s duration */
+  animation-fill-mode: both; /* Keep the end state after the animation */
+}
+
 body {
     font-family: 'Arial', sans-serif;
 }
@@ -31,7 +53,7 @@ body {
 .jumbotron {
     background-image: url('path/to/your/image.jpg'); /* Add a background image */
     background-size: cover;
-    color: white;
+    color: black;
 }
 
 /* Footer Styling */
@@ -39,3 +61,6 @@ footer {
     background-color: #f8f9fa; /* Adjust the color */
     color: black;
 }
+
+
+
