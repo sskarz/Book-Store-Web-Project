@@ -1,24 +1,26 @@
-/* Fade In Animation */
+/* Remove this part from your main.css
 @keyframes fadeIn {
   from {
     opacity: 0;
+    visibility: hidden;
   }
   to {
     opacity: 1;
+    visibility: visible;
   }
 }
 
 .fadeIn {
   animation-name: fadeIn;
-  animation-duration: 1s; /* Or however long you want the fade to take */
-  animation-fill-mode: both; /* Keep the end state after the animation */
+  animation-duration: 5s;
+  animation-fill-mode: both;
 }
 
-/* Apply fade-in animation to all paragraphs within the content section */
 .container .row div p {
-  animation: fadeIn 1s ease-in-out; /* Consistent 5s duration */
-  animation-fill-mode: both; /* Keep the end state after the animation */
+  animation: fadeIn 1s ease-in-out;
 }
+*/
+
 
 body {
     font-family: 'Arial', sans-serif;
