@@ -1,44 +1,41 @@
-@charset "utf-8";
-
-#header{
-    border-style: none;
-    width: 800px;
-    height: auto;
-
+body {
+    font-family: 'Arial', sans-serif;
 }
-#nav li{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    foot-size: 1em;
-    list-style-type: none;
-    border-bottom: thin solid #5f5f5f;
-    color: #4C4C4C;
-    left: 0px;
-    list-style-position: inside;
-    margin-left: -10px;
-}
-#leftsidebar{
-    width: 180px;
-    height: 350px;
-    float: left;
 
+/* Navbar Styling */
+.navbar {
+    background-color: #f8f9fa; /* Adjust the color */
 }
-#main {
-    width: 560px;
-    float: left;
-    margin-left: 20px;
-    margin-right: 10px;
-    padding-right: 10px;
-}
-#footer{
-    text-align: center;
-    foot-size: 0.8em;
-    margin-top: 5px;
-    padding-top: 10px;
-    padding-border: 10px;
-    background-color: #FFFFFF;
-    border-top: thin solid #18964d;
-    clear: both;
-    color: #969696;
 
+.navbar-nav .nav-item .nav-link {
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Dropdown Menu Styling */
+.navbar .dropdown-menu {
+    display: none; /* Initially hide the dropdown */
+    opacity: 0;
+    transition: opacity 0.5s; /* Smooth transition for the dropdown */
+}
+
+.navbar .nav-item:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
+    opacity: 1;
+}
+
+/* Jumbotron Styling */
+.jumbotron {
+    background-image: url('path/to/your/image.jpg'); /* Add a background image */
+    background-size: cover;
+    color: white;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #f8f9fa; /* Adjust the color */
+    color: black;
 }
