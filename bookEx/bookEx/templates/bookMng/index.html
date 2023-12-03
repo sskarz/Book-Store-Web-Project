@@ -16,7 +16,9 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'index' %}">Book Exchange</a>
+    <a class="navbar-brand" href="{% url 'index' %}">
+      Book Exchange <img src="/static/book.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -86,8 +88,8 @@
       <div class="card">
         <img src="{% static 'chamberofsecrets.jpg' %}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Image Title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">Harry Potter: Chamber of Secrets</h5>
+          <p class="card-text">Harry's second year at Hogwarts, where he investigates a dark mystery involving a hidden chamber and a creature attacking students.</p>
         </div>
       </div>
     </div>
