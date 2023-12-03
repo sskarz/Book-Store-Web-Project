@@ -1,49 +1,102 @@
-{% extends "base.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Books</title>
+    <!-- Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static '/main.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
 
-{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      Book Exchange <img src="/static/book.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Books
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{%url 'displaybooks'%}">Display Books</a> <!-- Dropdown item -->
+            <a class="dropdown-item" href="{%url 'mybooks'%}">My Books</a>  <!-- Dropdown item -->
+            <a class="dropdown-item" href="{%url 'postbook'%}">Post Books</a>  <!-- Dropdown item -->
+          </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{%url 'aboutus' %}">About Us</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'search' %}">Search</a>
+        </li>
 
-{% block title %}
-   Display
-{% endblock title %}
+        <!-- ... (other nav items) ... -->
+      </ul>
+    </div>
+  </nav>
 
-{% block sidenav %}
-{% for item in item_list %}
-<li>
-    <a href="{{ item.link }}">{{item.item}}</a>
-</li>
-{% endfor %}
-{% endblock sidenav %}
+<!-- Hero Section -->
+<div class="jumbotron jumbotron-fluid" data-aos="fade-down">
+  <div class="container center-text">
+    <h1 class="display-4">Display Books</h1>
+    <p class="lead">See what books are being offered.</p>
+  </div>
+</div>
 
+<!-- Content Sections -->
 {% block content %}
-    <h1 align="center">Display Book Page</h1>
-    <table align="center" border="2" width="400">
-        <tr>
-            <th>Book Name</th>
-            <th>Book Price</th>
-            <th>Comment</th>
-            <th>Book Image</th>
-            <th>Rating</th> <!-- New column for rating -->
-        </tr>
-        {% for book in books %}
-            <tr>
-                <td align="center">
-                    <a href="book_detail/{{ book.id }}">
-                        {{ book.name }}
-                    </a>
-                </td>
-                <td align="center">
-                    {{ book.price }}
-                </td>
-                <td align="center">
-                    {{ book.comments }}
-                </td>
-                <td align="center">
-                     <img src="{% static book.pic_path %}" height="60" width="60" alt=" "/>
-                </td>
-                <td align="center">
-                    {{ book.rating }}/5 <!-- Display the rating here -->
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            {% for book in books %}
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static book.pic_path %}" class="card-img-top" alt="{{ book.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.name }}</h5>
+                            <p class="card-text">Price: {{ book.price }}</p>
+                            <p class="card-text">Rating: {{ book.rating }}/5</p>
+                            <p class="card-text">{{ book.comments }}</p>
+                            <a href="book_detail/{{ book.id }}" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}
+
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3">
+    © 2023 Book Exchange
+    Created by: Sanskar, Sunheng, Evan, Norma, x, x
+  </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- AOS Animation library -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200, // You can adjust the duration as needed
+        once: false, // Whether animation should happen only once - while scrolling down
+      });
+    </script>
+</body>
+</html>
