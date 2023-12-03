@@ -65,9 +65,11 @@ def displaybooks(request):
                   'bookMng/displaybooks.html',
                   {
                       'item_list': MainMenu.objects.all(),
-                      'books': books
+                      'books': books,
+                      'range_5': range(1, 6),  # Add this line to pass the range to the template
                   }
                   )
+
 class Register(CreateView):
     template_name = 'registration/register.html'
     form_class = UserCreationForm
