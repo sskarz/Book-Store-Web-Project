@@ -53,10 +53,11 @@ body {
 
 /* Jumbotron Styling */
 .jumbotron {
-    background-image: url('path/to/your/image.jpg'); /* Add a background image */
+    background-image: url('banner.jpg'); /* Add a background image */
     background-size: cover;
     color: black;
 }
+
 
 /* Footer Styling */
 footer {
