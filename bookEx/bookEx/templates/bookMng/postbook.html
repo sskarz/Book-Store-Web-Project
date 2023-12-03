@@ -64,7 +64,7 @@
     {% else %}
         <form action="" enctype="multipart/form-data" method="post" novalidate class="needs-validation">
             {% csrf_token %}
-            <div class="py-3">
+            <div class="py-3" data-aos="fade-up">
                 <h1 class="text-center mb-4">Post a Book</h1>
                 {% for field in form %}
                     <div class="form-group">
