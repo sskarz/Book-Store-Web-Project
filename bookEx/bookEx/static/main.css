@@ -62,6 +62,20 @@ body {
     text-align: center;
 }
 
+.card-img-top {
+    object-fit: cover; /* This will cover the area of the card without stretching the image */
+    height: 200px; /* Set a fixed height for your images */
+}
+
+.card {
+    display: flex;
+    flex-direction: column; /* Stack the card content vertically */
+}
+
+.card-body {
+    flex: 1; /* This will make the card body fill the space left by the image */
+}
+
 /* Footer Styling */
 footer {
     background-color: #f8f9fa; /* Adjust the color */
