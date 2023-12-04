@@ -160,6 +160,12 @@ def search(request):
                       'books': books
                   }
                   )
+def cart(request):
+    return render(request,
+                  'bookMng/cart.html',
+                  {
+
+                  })
 
 
 
