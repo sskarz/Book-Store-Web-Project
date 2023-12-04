@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import remove_book
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -8,7 +9,7 @@ urlpatterns = [
     path('displaybooks', views.displaybooks, name='displaybooks'),
     path('book_detail/<int:book_id>', views.book_detail, name='book_detail'),
     path('mybooks', views.mybooks, name='mybooks'),
-    path('book_delete/<int:book_id>', views.book_delete, name='book_delete'),
+    path('remove_book/<int:book_id>/', remove_book, name='remove_book'),
     path('messages', views.messages, name='messages'),
     path('search', views.search, name='search'),
     # Updated line for viewing the cart

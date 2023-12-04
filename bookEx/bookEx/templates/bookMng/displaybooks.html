@@ -82,7 +82,10 @@
                 </div>
                 <!-- Ensure the button is at the bottom of the card -->
                 <div class="mt-auto">
-                    <a href="{% url 'add_to_cart' book.id %}" class="btn btn-primary mt-auto">Add to Cart</a>
+                    <form action="{% url 'remove_book' book.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mt-auto">Remove</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -114,5 +117,5 @@
         once: false, // Whether animation should happen only once - while scrolling down
       });
     </script>
-</body>
+</body>d
 </html>

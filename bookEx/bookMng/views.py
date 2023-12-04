@@ -15,6 +15,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from .models import Book, Cart, CartItem
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from .models import Book  # Replace with your actual model import
 
 # Create your views here.
 
@@ -98,16 +100,12 @@ def book_detail(request, book_id):
 
 
 @login_required(login_url=reverse_lazy('login'))
-def book_delete(request, book_id):
-    book = Book.objects.get(id=book_id)
-    book.delete()
-    return render(request,
-                  'bookMng/book_delete.html',
-                  {
-                      'item_list': MainMenu.objects.all(),
-                      'book': book
-                  }
-                  )
+def remove_book(request, book_id):
+    if request.method == 'POST':
+        book = Book.objects.get(id=book_id)
+        book.delete()
+        # Add a success message or any other post-deletion logic
+        return redirect('displaybooks')  # Redirect to the displaybooks page
 
 @login_required(login_url=reverse_lazy('login'))
 def mybooks(request):
