@@ -31,7 +31,14 @@ class Book(models.Model):
     comments = models.CharField(max_length=200)
     rating = models.IntegerField(choices=[(1, '1 Star'), (2, '2 Stars'), (3, '3 Stars'), (4, '4 Stars'), (5, '5 Stars')], default=1)
 
-
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Other fields like created_at, updated_at can be added if needed
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    # Add a method to calculate the total price for this item
 
     def __str__(self):
         return str(self.id)

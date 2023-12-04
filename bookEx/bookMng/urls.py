@@ -11,5 +11,8 @@ urlpatterns = [
     path('book_delete/<int:book_id>', views.book_delete, name='book_delete'),
     path('messages', views.messages, name='messages'),
     path('search', views.search, name='search'),
-    path('cart', views.cart, name='cart'),
+    # Updated line for viewing the cart
+    path('cart/', views.view_cart, name='cart'),
+    path('add_to_cart/<int:book_id>/', views.add_to_cart, name='add_to_cart'),
+    path('remove_from_cart/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
 ]
