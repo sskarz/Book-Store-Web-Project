@@ -12,6 +12,9 @@ from .forms import MessageForm
 from django.shortcuts import redirect
 from .models import Cart, CartItem, Book
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from .models import Book, Cart, CartItem
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -159,25 +162,21 @@ def search(request):
                   }
                   )
 
-@login_required(login_url=reverse_lazy('login'))
+@login_required
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart_item, created = CartItem.objects.get_or_create(cart=cart, book=book)
-    cart_item.quantity += 1  # Increment quantity or set it as per your logic
+    # Update the quantity if needed
+    # cart_item.quantity += 1
     cart_item.save()
-    return redirect('cart')  # Redirect to the cart view
+    return HttpResponseRedirect('/cart')
 
-@login_required(login_url=reverse_lazy('login'))
+@login_required
 def view_cart(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    items = CartItem.objects.filter(cart=cart)
-    return render(request, 'bookMng/cart.html', {'items': items})
-
-def remove_from_cart(request, item_id):
-    item = get_object_or_404(CartItem, id=item_id)
-    item.delete()
-    return redirect('cart')
+    items = cart.cartitem_set.all()
+    return render(request, 'cart.html', {'cart_items': items})
 
 
 

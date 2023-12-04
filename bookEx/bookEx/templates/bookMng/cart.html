@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load cart_extras %}
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,17 +65,14 @@
 
 <!-- Content Sections -->
 <div class="container">
-  <!-- Start of a new row for "Our Mission" section and the card -->
-  <div class="row mx-4 mh-100" data-aos="fade-up">
-    <!-- Text Section "Our Mission" -->
-    <div class="col-12 col-lg-8">
 
-    </div>
+      {% empty %}
+      <p>Cart is empty</p>
+      {% endfor %}
     <!-- Card Section -->
     <div class="col-4 d-none d-lg-block">
 
     </div>
-  </div>
     <!-- Repeat for other columns -->
 </div>
 
@@ -93,6 +91,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- AOS Animation library -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Calculate the subtotal for each cart item
+  document.querySelectorAll('.quantity-input').forEach(function(input) {
+    input.addEventListener('change', function() {
+      var price = parseFloat(this.closest('.card-body').querySelector('.price').textContent);
+      var quantity = parseInt(this.value);
+      var subtotal = price * quantity;
+      this.closest('.card-body').querySelector('.subtotal').textContent = subtotal.toFixed(2);
+    });
+  });
+</script>
     <script>
       AOS.init({
         duration: 1200, // You can adjust the duration as needed

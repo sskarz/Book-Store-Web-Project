@@ -12,7 +12,6 @@ urlpatterns = [
     path('messages', views.messages, name='messages'),
     path('search', views.search, name='search'),
     # Updated line for viewing the cart
+    path('add_to_cart/<int:book_id>', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.view_cart, name='cart'),
-    path('add_to_cart/<int:book_id>/', views.add_to_cart, name='add_to_cart'),
-    path('remove_from_cart/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
 ]

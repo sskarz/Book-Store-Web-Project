@@ -35,7 +35,7 @@ class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Other fields like created_at, updated_at can be added if needed
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     # Add a method to calculate the total price for this item
