@@ -122,33 +122,30 @@ def mybooks(request):
 @login_required(login_url=reverse_lazy('login'))
 def messages(request):
     submitted = False
-    messages = Message.objects.all()
     if request.method == 'POST':
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
             message = form.save(commit=False)
-            try:
-                message.user = request.user
-            except Exception:
-                pass
+            message.user = request.user  # Assign the user
             message.save()
             return HttpResponseRedirect('/messages?submitted=True')
     else:
         form = MessageForm()
-        if 'submitted' in request.GET:
-            submitted = True
 
-    for message in messages:
-        message.user = request.POST.get('user')
-        message.message = request.POST.get('message')
-        message.date = request.POST.get('date')
+    # Check if form was submitted successfully
+    if 'submitted' in request.GET:
+        submitted = True
 
-    return render(request, 'bookMng/messages.html',{
-                      'item_list': MainMenu.objects.all(),
-                      'form': form,
-                      'submitted': submitted,
-                      'messages': messages,
-                  })
+    # Get all messages from the database
+    messages = Message.objects.all()
+
+    return render(request, 'bookMng/messages.html', {
+        'item_list': MainMenu.objects.all(),
+        'form': form,
+        'submitted': submitted,
+        'messages': messages,
+    })
+
 
 def search(request):
     books = Book.objects.filter(name__contains=request.GET.get('search'))
