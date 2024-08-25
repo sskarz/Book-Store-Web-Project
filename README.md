@@ -26,7 +26,15 @@ python manage.py runserver
 <br>(11) Username: admin | Password: 4567890
 <br>(12) Enjoy!
 
+## Example use of website
+
+
+https://github.com/user-attachments/assets/cd87aab7-3cab-4d26-972a-ef2b46c00aa6
+
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
+
