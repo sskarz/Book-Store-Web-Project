@@ -1,5 +1,3 @@
-# CS3337Fall2023
-
 # Book Store Website
 
 This book store website is locally deployed and was creating in the Software Engineering Class of Fall 2023 (CS3337).
